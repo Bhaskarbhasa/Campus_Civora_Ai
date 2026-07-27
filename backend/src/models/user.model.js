@@ -6,6 +6,8 @@ const userSchema = new mongoose.Schema(
       type: String,
       required: true,
       trim: true,
+      minlength: 3,
+      maxlength: 100,
     },
 
     email: {
@@ -19,7 +21,8 @@ const userSchema = new mongoose.Schema(
     password: {
       type: String,
       required: true,
-      minlength: 6,
+      minlength: 8,
+      select: false,
     },
 
     role: {
@@ -28,9 +31,19 @@ const userSchema = new mongoose.Schema(
       default: "STUDENT",
     },
 
+    isVerified: {
+      type: Boolean,
+      default: false,
+    },
+
     isActive: {
       type: Boolean,
       default: true,
+    },
+
+    lastLogin: {
+      type: Date,
+      default: null,
     },
   },
   {
